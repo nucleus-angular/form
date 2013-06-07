@@ -8,7 +8,7 @@ angular.module('nag.validate.required', [])
       scope: {},
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.notEmpty(value) === true) {
+          if(nagDataValidation.validate('notEmpty', value) === true) {
             controller.$setValidity('nagRequired', true);
           } else {
             controller.$setValidity('nagRequired', false);

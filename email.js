@@ -7,7 +7,7 @@ angular.module('nag.validate.email', [])
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.email(value) === true) {
+          if(nagDataValidation.validate('email', value) === true) {
             controller.$setValidity('nagEmail', true);
           } else {
             controller.$setValidity('nagEmail', false);

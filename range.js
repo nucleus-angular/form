@@ -8,7 +8,7 @@ angular.module('nag.validate.range', [])
       link: function(scope, element, attributes, controller) {
         var options = scope.$eval(attributes.nagValidateRange);
         var validate = function(value) {
-          if(nagDataValidation.range(value, options.min, options.max) === true) {
+          if(nagDataValidation.validate('range', value, options.min, options.max) === true) {
             controller.$setValidity('nagRange', true);
           } else {
             controller.$setValidity('nagRange', false);

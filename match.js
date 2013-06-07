@@ -9,7 +9,7 @@ angular.module('nag.validate.match', [])
         var validate = function(value) {
           var match = scope.$eval(attributes.nagValidateMatch);
 
-          if(nagDataValidation.match(value, match) === true) {
+          if(nagDataValidation.validate('match',value, match) === true) {
             controller.$setValidity('nagMatch', true);
           } else {
             controller.$setValidity('nagMatch', false);

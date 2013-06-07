@@ -7,7 +7,7 @@ angular.module('nag.validate.min', [])
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.min(value, attributes.nagValidateMin) === true) {
+          if(nagDataValidation.validate('min', value, attributes.nagValidateMin) === true) {
             controller.$setValidity('nagMin', true);
           } else {
             controller.$setValidity('nagMin', false);

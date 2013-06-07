@@ -7,7 +7,7 @@ angular.module('nag.validate.max', [])
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.max(value, attributes.nagValidateMax) === true) {
+          if(nagDataValidation.validate('max', value, attributes.nagValidateMax) === true) {
             controller.$setValidity('nagMax', true);
           } else {
             controller.$setValidity('nagMax', false);

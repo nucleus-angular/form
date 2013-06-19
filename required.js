@@ -5,7 +5,6 @@ angular.module('nag.validate.required', [])
     return {
       restrict: 'A',
       require: 'ngModel',
-      scope: {},
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
           if(nagDataValidation.validate('notEmpty', value) === true) {

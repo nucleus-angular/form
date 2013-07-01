@@ -1,4 +1,4 @@
-angular.module('nag.validate.range', [])
+angular.module('nag.form.validate.range', [])
 .directive('nagValidateRange', [
   'nagDataValidation',
   function(nagDataValidation) {

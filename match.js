@@ -1,4 +1,4 @@
-angular.module('nag.validate.match', [])
+angular.module('nag.form.validate.match', [])
 .directive('nagValidateMatch', [
   'nagDataValidation',
   function(nagDataValidation) {

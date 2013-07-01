@@ -1,5 +1,5 @@
-angular.module('nag.form.validate.min', [])
-.directive('nagValidateMin', [
+angular.module('nag.form.validate.equals', [])
+.directive('nagValidateEquals', [
   'nagDataValidation',
   function(nagDataValidation) {
     return {
@@ -7,10 +7,10 @@ angular.module('nag.form.validate.min', [])
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.validate('min', value, attributes.nagValidateMin) === true) {
-            controller.$setValidity('nagMin', true);
+          if(nagDataValidation.validate('match', value, attributes.nagValidateEquals) === true) {
+            controller.$setValidity('nagEquals', true);
           } else {
-            controller.$setValidity('nagMin', false);
+            controller.$setValidity('nagEquals', false);
           }
 
           return value;
@@ -19,7 +19,7 @@ angular.module('nag.form.validate.min', [])
         controller.$formatters.push(validate);
         controller.$parsers.unshift(validate);
 
-        attributes.$observe('nagValidateMin', function() {
+        attributes.$observe('nagValidateEquals', function() {
           validate(controller.$modelValue);
         });
       }

@@ -1,4 +1,4 @@
-angular.module('nag.validate.email', [])
+angular.module('nag.form.validate.email', [])
 .directive('nagValidateEmail', [
   'nagDataValidation',
   function(nagDataValidation) {

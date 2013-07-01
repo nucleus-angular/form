@@ -1,4 +1,4 @@
-angular.module('nag.validate.max', [])
+angular.module('nag.form.validate.max', [])
 .directive('nagValidateMax', [
   'nagDataValidation',
   function(nagDataValidation) {

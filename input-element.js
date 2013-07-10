@@ -42,8 +42,8 @@ angular.module('nag.form.inputElement', [
           var positionClass = attributes.iconPosition || 'after';
           //todo: make configurable
           if(attributes.iconPosition === 'before' || attributes.iconPosition === 'after') {
-            var successIconClass = attributes.successIcon || 'nag-icon-font-checkmark-circle ' + positionClass;
-            var errorIconClass = attributes.successIcon || 'nag-icon-font-cancel-circle ' + positionClass;
+            var successIconClass = attributes.successIcon || 'nag-icon-font-success-circle ' + positionClass;
+            var errorIconClass = attributes.successIcon || 'nag-icon-font-error-circle ' + positionClass;
             var iconHtml = $('<span class="icons"><span class="valid-icon ' + successIconClass + '" ng-show="modelController.$dirty && modelController.$valid"></span><span class="invalid-icon ' + errorIconClass + '" ng-show="modelController.$dirty && modelController.$invalid"></span></span>');
 
             if(attributes.iconPosition === 'before') {

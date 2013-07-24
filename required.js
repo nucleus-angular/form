@@ -1,3 +1,9 @@
+/**
+ * Form validator for required
+ *
+ * @module nag.form.validate.required
+ * @ngdirective nagValidateRequired
+ */
 angular.module('nag.form.validate.required', [])
 .directive('nagValidateRequired', [
   'nagDataValidation',

@@ -1,3 +1,9 @@
+/**
+ * Form validator for min
+ *
+ * @module nag.form.validate.min
+ * @ngdirective nagValidateMin
+ */
 angular.module('nag.form.validate.min', [])
 .directive('nagValidateMin', [
   'nagDataValidation',

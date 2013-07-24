@@ -1,3 +1,9 @@
+/**
+ * Input element that wraps in validation HTML
+ *
+ * @module nag.form.inputElement
+ * @ngdirective nagInputElement
+ */
 angular.module('nag.form.inputElement', [
   'nag.core'
 ])
@@ -20,6 +26,14 @@ angular.module('nag.form.inputElement', [
       controller: [
         '$scope',
         function($scope) {
+          /**
+           * Sets the model for the input element since this directive can not be applied directly to an input element
+           *
+           * @ngdirectivecontroller
+           * @method setModelController
+           *
+           * @param {object} modelController The model controller for the input element
+           */
           this.setModelController = function(modelController) {
             $scope.modelController = modelController;
           }
@@ -40,11 +54,9 @@ angular.module('nag.form.inputElement', [
 
         if(attributes.showAdditionalData === 'true') {
           var positionClass = attributes.iconPosition || 'after';
-          //todo: make configurable
+
           if(attributes.iconPosition === 'before' || attributes.iconPosition === 'after') {
-            var successIconClass = attributes.successIcon || 'nag-icon-font-success-circle ' + positionClass;
-            var errorIconClass = attributes.successIcon || 'nag-icon-font-error-circle ' + positionClass;
-            var iconHtml = $('<span class="icons"><span class="valid-icon ' + successIconClass + '" ng-show="modelController.$dirty && modelController.$valid"></span><span class="invalid-icon ' + errorIconClass + '" ng-show="modelController.$dirty && modelController.$invalid"></span></span>');
+            var iconHtml = $('<span class="icons"><span class="valid-icon ' + positionClass + '" ng-show="modelController.$dirty && modelController.$valid"></span><span class="invalid-icon ' + positionClass + '" ng-show="modelController.$dirty && modelController.$invalid"></span></span>');
 
             if(attributes.iconPosition === 'before') {
               element.find('.container').prepend(iconHtml);
@@ -61,6 +73,12 @@ angular.module('nag.form.inputElement', [
 
         return {
           pre: function(scope, element, attributes) {
+            //todo: replace with an attribute instead of option
+            /**
+             * Options for the input element
+             *
+             * @type {object}
+             */
             scope.options = nagDefaults.getInputElementOptions({});
             scope.options.isPlain = (attributes.showAdditionalData === 'true' ? false : true);
           },
@@ -79,6 +97,11 @@ angular.module('nag.form.inputElement', [
               }
             });
 
+            /**
+             * Retrieve the input message
+             *
+             * @returns {string} Input message
+             */
             scope.getInputMessage = function() {
               var returnValue;
 

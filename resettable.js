@@ -1,3 +1,9 @@
+/**
+ * Add form reset functionality to the current scope
+ *
+ * @module nag.form.resettable
+ * @ngdirective nagValidateEmail
+ */
 angular.module('nag.form.resettable', [])
 .directive('nagResettableForm', [
   function() {
@@ -8,10 +14,26 @@ angular.module('nag.form.resettable', [])
       controller: [
         '$scope',
         function($scope) {
+
+          /**
+           * Add a callback to be called when the form is resetted
+           *
+           * @ngdirectivecontroller
+           * @method addCallback
+           *
+           * @todo: refactor: should us an event instead an array of callbacks
+           * @param callback
+           */
           this.addCallback = function(callback) {
             attachedCallbacks.push(callback);
           };
 
+          /**
+           * Clears the callbacks
+           *
+           * @ngdirectivecontroller
+           * @method resetCallbacks
+           */
           this.resetCallbacks = function() {
             attachedCallbacks = [];
           }
@@ -23,6 +45,16 @@ angular.module('nag.form.resettable', [])
         }
       ],
       link: function(scope, element, attributes, controllers) {
+        /**
+         * Resets the form including validation data
+         *
+         * @ngscope
+         * @ngdirectivecontroller
+         *
+         * @param {string} form Name of the form
+         * @param {object} defaults Object with form default values
+         * @param {function} callback Callback to execute on form reset
+         */
         scope.resetForm = function(form, defaults, callback) {
           form.$dirty = false;
           form.$pristine = true;

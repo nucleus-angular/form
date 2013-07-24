@@ -1,3 +1,9 @@
+/**
+ * Form validator for email
+ *
+ * @module nag.form.validate.email
+ * @ngdirective nagValidateEmail
+ */
 angular.module('nag.form.validate.email', [])
 .directive('nagValidateEmail', [
   'nagDataValidation',

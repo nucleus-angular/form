@@ -1,3 +1,9 @@
+/**
+ * Form validator for range
+ *
+ * @module nag.form.validate.range
+ * @ngdirective nagValidateRange
+ */
 angular.module('nag.form.validate.range', [])
 .directive('nagValidateRange', [
   'nagDataValidation',

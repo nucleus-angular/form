@@ -1,3 +1,9 @@
+/**
+ * Form validator for match
+ *
+ * @module nag.form.validate.match
+ * @ngdirective nagValidateMatch
+ */
 angular.module('nag.form.validate.match', [])
 .directive('nagValidateMatch', [
   'nagDataValidation',

@@ -1,3 +1,9 @@
+/**
+ * Form validator for equals
+ *
+ * @module nag.form.validate.equals
+ * @ngdirective nagValidateEquals
+ */
 angular.module('nag.form.validate.equals', [])
 .directive('nagValidateEquals', [
   'nagDataValidation',

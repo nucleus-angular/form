@@ -1,3 +1,9 @@
+/**
+ * Form validator for max
+ *
+ * @module nag.form.validate.max
+ * @ngdirective nagValidateMax
+ */
 angular.module('nag.form.validate.max', [])
 .directive('nagValidateMax', [
   'nagDataValidation',

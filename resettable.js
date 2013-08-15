@@ -56,17 +56,14 @@ angular.module('nag.form.resettable', [])
          * @param {function} callback Callback to execute on form reset
          */
         scope.resetForm = function(form, defaults, callback) {
-          form.$dirty = false;
-          form.$pristine = true;
-
           for(var field in form) {
-            if(form[field].$pristine === false) {
-              form[field].$pristine = true;
+            if( form[field].$setViewValue) {
+              form[field].$setViewValue('');
             }
 
-            if(form[field].$dirty === true) {
-              form[field].$dirty = false;
-            }
+          if( form.$setPristine) {
+            console.log(form);
+              form.$setPristine();
           }
 
           //todo: does not work when model is attach to a property of an object
@@ -90,7 +87,7 @@ angular.module('nag.form.resettable', [])
         };
 
         scope.unregisterBroadcast = scope.$on('trigger-form-reset/' + controllers[0].$name, function(defaults, callback) {
-          scope.resetForm(controllers[0].$name, defaults, callback);
+          scope.resetForm(controllers[0], defaults, callback);
         });
       }
     };

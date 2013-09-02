@@ -56,33 +56,54 @@ angular.module('nag.form.resettable', [])
          * @param {function} callback Callback to execute on form reset
          */
         scope.resetForm = function(form, defaults, callback) {
+          var clearEval;
+
           for(var field in form) {
-            if( form[field].$setViewValue) {
+            if(form[field].$setViewValue) {
               form[field].$setViewValue('');
             }
 
-          if( form.$setPristine) {
-            console.log(form);
-              form.$setPristine();
-          }
+            if(form[field].$name) {
+              $('[name="' + form[field].$name + '"]').val('');
 
-          //todo: does not work when model is attach to a property of an object
-          if(defaults) {
-            for(var defaultValue in defaults) {
-              if(defaults[defaultValue]) {
-                scope[defaultValue] = defaults[defaultValue];
+              //clear the data on the model
+              if(attributes.formModel && form[field].$name) {
+                if(scope.$eval(attributes.formModel + '.' + form[field].$name) !== undefined) {
+                  clearEval = attributes.formModel + '.' + form[field].$name + " = \'\';";
+                }
+              } else if(scope.$eval(form[field].$name) !== undefined) {
+                clearEval = form[field].$name + " = '';";
+              }
+
+              if(clearEval) {
+                scope.$eval(clearEval);
               }
             }
-          }
 
-          if(attachedCallbacks.length > 0) {
-            _.forEach(attachedCallbacks, function(callback) {
+            clearEval = null;
+
+            if(form.$setPristine) {
+              form.$setPristine();
+            }
+
+            //todo: does not work when model is attach to a property of an object
+            if(defaults) {
+              for(var defaultValue in defaults) {
+                if(defaults[defaultValue]) {
+                  scope[defaultValue] = defaults[defaultValue];
+                }
+              }
+            }
+
+            if(attachedCallbacks.length > 0) {
+              _.forEach(attachedCallbacks, function(callback) {
+                callback();
+              });
+            }
+
+            if(_.isFunction(callback)) {
               callback();
-            });
-          }
-
-          if(_.isFunction(callback)) {
-            callback();
+            }
           }
         };
 

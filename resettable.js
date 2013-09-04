@@ -6,7 +6,8 @@
  */
 angular.module('nag.form.resettable', [])
 .directive('nagResettableForm', [
-  function() {
+  '$rootScope',
+  function($rootScope) {
     var attachedCallbacks = [];
     return {
       restrict: 'EA',
@@ -38,9 +39,19 @@ angular.module('nag.form.resettable', [])
             attachedCallbacks = [];
           }
 
+          /**
+           * Unregisters the callback tied to the trigger-auto-focus event
+           *
+           * @ngscope
+           * @method unregisterFormResetEvent
+           * @type function
+           */
+          $scope.unregisterFormResetEvent = null;
+
           $scope.$on('$destroy', function() {
-            //if the scope is destroyed, we no longer need this broadcast to be registered
-            $scope.unregisterBroadcast();
+            if($scope.unregisterFormResetEvent) {
+              $scope.unregisterFormResetEvent();
+            }
           });
         }
       ],
@@ -53,9 +64,8 @@ angular.module('nag.form.resettable', [])
          *
          * @param {string} form Name of the form
          * @param {object} defaults Object with form default values
-         * @param {function} callback Callback to execute on form reset
          */
-        scope.resetForm = function(form, defaults, callback) {
+        scope.resetForm = function(form, defaults) {
           var clearEval;
 
           for(var field in form) {
@@ -95,7 +105,7 @@ angular.module('nag.form.resettable', [])
               }
             }
 
-            if(attachedCallbacks.length > 0) {
+            /*if(attachedCallbacks.length > 0) {
               _.forEach(attachedCallbacks, function(callback) {
                 callback();
               });
@@ -103,12 +113,18 @@ angular.module('nag.form.resettable', [])
 
             if(_.isFunction(callback)) {
               callback();
-            }
+            }*/
           }
         };
 
-        scope.unregisterBroadcast = scope.$on('trigger-form-reset/' + controllers[0].$name, function(defaults, callback) {
-          scope.resetForm(controllers[0], defaults, callback);
+        /**
+         * Will reset the form
+         *
+         * @respondto NagForm[form name]/reset
+         * @eventlevel root
+         */
+        scope.unregisterFormResetEvent = $rootScope.$on('NagForm[' + controllers[0].$name + ']/reset', function(self, defaults) {
+          scope.resetForm(controllers[0], defaults);
         });
       }
     };

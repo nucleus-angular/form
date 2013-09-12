@@ -73,7 +73,6 @@ angular.module('nag.form.inputElement', [
 
         return {
           pre: function(scope, element, attributes) {
-            //todo: replace with an attribute instead of option
             /**
              * Options for the input element
              *

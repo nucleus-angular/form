@@ -8,37 +8,12 @@ angular.module('nag.form.resettable', [])
 .directive('nagResettableForm', [
   '$rootScope',
   function($rootScope) {
-    var attachedCallbacks = [];
     return {
       restrict: 'EA',
       require: ['form'],
       controller: [
         '$scope',
         function($scope) {
-
-          /**
-           * Add a callback to be called when the form is resetted
-           *
-           * @ngdirectivecontroller
-           * @method addCallback
-           *
-           * @todo: refactor: should us an event instead an array of callbacks
-           * @param callback
-           */
-          this.addCallback = function(callback) {
-            attachedCallbacks.push(callback);
-          };
-
-          /**
-           * Clears the callbacks
-           *
-           * @ngdirectivecontroller
-           * @method resetCallbacks
-           */
-          this.resetCallbacks = function() {
-            attachedCallbacks = [];
-          }
-
           /**
            * Unregisters the callback tied to the trigger-auto-focus event
            *
@@ -104,16 +79,6 @@ angular.module('nag.form.resettable', [])
                 }
               }
             }
-
-            /*if(attachedCallbacks.length > 0) {
-              _.forEach(attachedCallbacks, function(callback) {
-                callback();
-              });
-            }
-
-            if(_.isFunction(callback)) {
-              callback();
-            }*/
           }
         };
 

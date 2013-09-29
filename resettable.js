@@ -2,7 +2,7 @@
  * Add form reset functionality to the current scope
  *
  * @module nag.form.resettable
- * @ngdirective nagValidateEmail
+ * @ngdirective nagResettableForm
  */
 angular.module('nag.form.resettable', [])
 .directive('nagResettableForm', [
@@ -35,7 +35,8 @@ angular.module('nag.form.resettable', [])
          * Resets the form including validation data
          *
          * @ngscope
-         * @ngdirectivecontroller
+         *
+         * @method resetForm
          *
          * @param {string} form Name of the form
          * @param {object} defaults Object with form default values

@@ -1,3 +1,8 @@
+/**
+ * Stores all for validators
+ *
+ * @module nag.form.validate
+ */
 angular.module('nag.form.validate', [
   'nag.form.validate.email',
   'nag.form.validate.match',
@@ -8,6 +13,11 @@ angular.module('nag.form.validate', [
   'nag.form.validate.equals'
 ]);
 
+/**
+ * Collection of form components
+ *
+ * @module nag.form
+ */
 angular.module('nag.form', [
   'nag.form.inputElement',
   'nag.form.input',

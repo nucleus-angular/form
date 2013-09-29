@@ -2,11 +2,9 @@
   "name": "nucleus-angular-form",
   "version": "0.2.10",
   "dependencies": {
-    "nucleus-angular-data-validation": "latest"
+    "nucleus-angular-data-validation": "master"
   },
   "devDependencies": {
-    "angular": "1.0.6",
-    "angular-mocks": "1.0.6",
-    "unstable-angular-complete": "1.1.5"
+    "unstable-angular-complete": "1.2.0rc2"
   }
 }

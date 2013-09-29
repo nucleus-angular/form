@@ -76,6 +76,9 @@ angular.module('nag.form.inputElement', [
             /**
              * Options for the input element
              *
+             * @ngscope
+             *
+             * @property options
              * @type {object}
              */
             scope.options = nagDefaults.getInputElementOptions({});
@@ -98,6 +101,10 @@ angular.module('nag.form.inputElement', [
 
             /**
              * Retrieve the input message
+             *
+             * @ngscope
+             *
+             * @method getInputMessage
              *
              * @returns {string} Input message
              */

@@ -1,5 +1,5 @@
 /**
- * Stores all for validators
+ * This is a module collection for all for validators
  *
  * @module nag.form.validate
  */
@@ -14,7 +14,9 @@ angular.module('nag.form.validate', [
 ]);
 
 /**
- * Collection of form components
+ * # Form
+ * 
+ * This module include a number components that relate to working with forms and form input elements.
  *
  * @module nag.form
  */

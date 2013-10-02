@@ -1,9 +1,14 @@
 /**
- * Allows us to be able to set the module container for the input element and extend text directives (since those directive are not applied directly to a
- * input element)
+ * # Input
+ *
+ * This directive is to be used in connection with nagInputElement or nagExtendText in order to tell those directive what the ngModelController in for them.
+ *
+ * EXAMPLE TOOD
  *
  * @module nag.form.input
  * @ngdirective nagInput
+ *
+ * @nghtmlattribute nag-input
  */
 angular.module('nag.form.input', [])
 .directive('nagInput', [

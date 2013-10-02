@@ -1,8 +1,15 @@
 /**
- * Form validator for email
+ * # Email Form Validator
  *
+ * This will validate an input input as an email address.
+
+ ```html
+ <input type="text" ng-model="email" nag-validate-email />
+ ```
  * @module nag.form.validate.email
  * @ngdirective nagValidateEmail
+ *
+ * @nghtmlattribute {null} nag-validate-email
  */
 angular.module('nag.form.validate.email', [])
 .directive('nagValidateEmail', [

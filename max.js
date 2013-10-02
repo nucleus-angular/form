@@ -1,8 +1,16 @@
 /**
- * Form validator for max
+ * # Max Form Validator
+ *
+ * Validates that a form input element in under a certain minimun numeric value.
+ *
+ * ```html
+ * <input type="text" ng-model="age" nag-validate-max="13" />
+ * ```
  *
  * @module nag.form.validate.max
  * @ngdirective nagValidateMax
+ *
+ * @nghtmlattribute {number} nag-validate-max The maximum value
  */
 angular.module('nag.form.validate.max', [])
 .directive('nagValidateMax', [

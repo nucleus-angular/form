@@ -1,5 +1,9 @@
 /**
- * Input element that wraps in validation HTML
+ * # Input Element
+ *
+ * This directive will wrap any for input element up with structure for displaying form errors.
+ *
+ * EXAMPLE TODO
  *
  * @module nag.form.inputElement
  * @ngdirective nagInputElement
@@ -40,6 +44,7 @@ angular.module('nag.form.inputElement', [
         }
       ],
       compile: function(element, attributes, transclude) {
+        //todo: this needs to be configurable
         var errorMessages = {
           nagRequired: 'Required',
           nagEmail: 'Must be valid email',

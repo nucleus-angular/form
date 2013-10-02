@@ -1,8 +1,12 @@
 /**
- * Add form reset functionality to the current scope
+ * # Resettable Form
+ *
+ * Add form reset functionality to the current scope.
  *
  * @module nag.form.resettable
  * @ngdirective nagResettableForm
+ *
+ * @nghtmlattribute {null} nag-resttable-form
  */
 angular.module('nag.form.resettable', [])
 .directive('nagResettableForm', [

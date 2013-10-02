@@ -1,8 +1,16 @@
 /**
- * Form validator for range
+ * # Range Form Validator
+ *
+ * Make sure of form input element's value in within a certian numerical value.
+ *
+ * ```html
+ * <input type="text" ng-model="age" nag-validate-range=:{min: 13, max: 100}"/>
+ * ```
  *
  * @module nag.form.validate.range
  * @ngdirective nagValidateRange
+ *
+ * @nghtmlattribute {object} nag-validate-range An object with a min and max property
  */
 angular.module('nag.form.validate.range', [])
 .directive('nagValidateRange', [

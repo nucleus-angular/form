@@ -6,9 +6,12 @@
 angular.module('nag.form.validate', [
   'nag.form.validate.email',
   'nag.form.validate.match',
-  'nag.form.validate.max',
-  'nag.form.validate.min',
-  'nag.form.validate.range',
+  'nag.form.validate.maxValue',
+  'nag.form.validate.minValue',
+  'nag.form.validate.rangeValue',
+  'nag.form.validate.maxLength',
+  'nag.form.validate.minLength',
+  'nag.form.validate.rangeLength',
   'nag.form.validate.required',
   'nag.form.validate.equals'
 ]);

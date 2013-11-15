@@ -12,7 +12,9 @@
  *
  * @nghtmlattribute {number} nag-validate-max-length The maximum length
  */
-angular.module('nag.form.validate.maxLength', [])
+angular.module('nag.form.validate.maxLength', [
+  'nag.dataValidation'
+])
 .directive('nagValidateMaxLength', [
   'nagDataValidation',
   function(nagDataValidation) {
@@ -21,7 +23,7 @@ angular.module('nag.form.validate.maxLength', [])
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.validate('maxLength', value, attributes.nagValidateMax) === true) {
+          if(nagDataValidation.validate('maxLength', value, attributes.nagValidateMaxLength) === true) {
             controller.$setValidity('nagMaxLength', true);
           } else {
             controller.$setValidity('nagMaxLength', false);

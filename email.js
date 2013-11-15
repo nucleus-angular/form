@@ -11,7 +11,9 @@
  *
  * @nghtmlattribute {null} nag-validate-email
  */
-angular.module('nag.form.validate.email', [])
+angular.module('nag.form.validate.email', [
+  'nag.dataValidation'
+])
 .directive('nagValidateEmail', [
   'nagDataValidation',
   function(nagDataValidation) {

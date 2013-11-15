@@ -8,24 +8,25 @@
  * @module nag.form.inputElement
  * @ngdirective nagInputElement
  */
-angular.module('nag.form.inputElement', [
-  'nag.core'
-])
+angular.module('nag.form.inputElement', [])
 .directive('nagInputElement', [
   '$compile',
-  'nagDefaults',
-  function($compile, nagDefaults) {
+  function($compile) {
     return {
       restrict: 'EA',
       transclude: true,
+      templateUrl: function(element, attributes) {
+        if(attributes.showAdditionalData !== 'true') {
+          return 'components/nucleus-angular-form/assets/templates/input-element-plain.html';
+        }
+
+        var iconsPosition = attributes.iconPosition === 'after' ? 'after' : 'before';
+        return 'components/nucleus-angular-form/assets/templates/input-element-icons-' + iconsPosition + '.html';
+      },
       scope: {
-        //the model is assume to be the form object
-        model: '=dataModel',
         showAdditionalData: '@',
         iconPosition: '@',
-        messageDisplay: '@',
-        successIcon: '@',
-        errorIcon: '@'
+        messageDisplay: '@'
       },
       controller: [
         '$scope',
@@ -48,62 +49,24 @@ angular.module('nag.form.inputElement', [
         var errorMessages = {
           nagRequired: 'Required',
           nagEmail: 'Must be valid email',
-          nagMin: 'Value to small',
-          nagMax: 'Value to big',
-          nagRange: 'Not within range',
+          nagEquals: "Value not what it should be",
+          nagMinValue: 'Value to small',
+          nagMaxValue: 'Value to big',
+          nagRangeValue: 'Not within range',
+          nagMinLength: 'Length to small',
+          nagMaxLength: 'Length to big',
+          nagRangeLength: 'Not within range',
           nagMatch: 'Values must match'
         };
 
         element.addClass('input-element');
-        element.append('<span class="container" ng-class="{invalid: modelController.$invalid && !options.isPlain && modelController.$dirty, valid: modelController.$valid && !options.isPlain && modelController.$dirty, plain: modelController.$pristine || options.isPlain}"></span>');
-
-        if(attributes.showAdditionalData === 'true') {
-          var positionClass = attributes.iconPosition || 'after';
-
-          if(attributes.iconPosition === 'before' || attributes.iconPosition === 'after') {
-            var iconHtml = $('<span class="icons"><span class="valid-icon ' + positionClass + '" ng-show="modelController.$dirty && modelController.$valid"></span><span class="invalid-icon ' + positionClass + '" ng-show="modelController.$dirty && modelController.$invalid"></span></span>');
-
-            if(attributes.iconPosition === 'before') {
-              element.find('.container').prepend(iconHtml);
-            } else {
-              element.find('.container').append(iconHtml);
-            }
-          }
-
-          var messageTag = (attributes.messageDisplay === 'block' ? 'div' : 'span');
-          var messageHtml = $('<' + messageTag  + ' class="input-message" ng-class="{\'error-text\': modelController.$invalid, \'success-text\': modelController.$valid}" ng-show="modelController.$dirty">{{ getInputMessage() }}</' + messageTag + '>');
-
-          element.append(messageHtml);
-        }
 
         return {
           pre: function(scope, element, attributes) {
-            /**
-             * Options for the input element
-             *
-             * @ngscope
-             *
-             * @property options
-             * @type {object}
-             */
-            scope.options = nagDefaults.getInputElementOptions({});
-            scope.options.isPlain = (attributes.showAdditionalData === 'true' ? false : true);
+            scope.isPlain = (attributes.showAdditionalData !== 'true' ? true : false);
+            scope.messageInline = (attributes.messageDisplay !== 'block' ? true : false);
           },
           post: function(scope, element, attributes) {
-            transclude(scope, function(clone) {
-              if(attributes.showAdditionalData === 'true') {
-                if(attributes.iconPosition === 'before') {
-                  element.find('.icons').after(clone);
-                } else if(attributes.iconPosition === 'after') {
-                  element.find('.icons').before(clone);
-                } else {
-                  element.find('.container').append(clone);
-                }
-              } else {
-                element.find('.container').append(clone);
-              }
-            });
-
             /**
              * Retrieve the input message
              *
@@ -115,19 +78,22 @@ angular.module('nag.form.inputElement', [
              */
             scope.getInputMessage = function() {
               var returnValue;
+              var hasError;
 
               if(scope.modelController) {
                 _.forEach(scope.modelController.$error, function(value, key) {
                   if(!returnValue && value === true) {
+                    hasError = true;
                     returnValue = errorMessages[key];
                   }
                 });
 
-                if(!returnValue) {
+                if(!returnValue && hasError === true) {
+                  returnValue = 'Invalid';
+                } else if(!returnValue) {
                   returnValue = 'Valid';
                 }
               } else {
-                //console.log('can\'t find input');
                 returnValue = '';
               }
 

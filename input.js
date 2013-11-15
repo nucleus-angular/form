@@ -5,6 +5,8 @@
  *
  * EXAMPLE TOOD
  *
+ * @todo: figure out how to test this
+ *
  * @module nag.form.input
  * @ngdirective nagInput
  *

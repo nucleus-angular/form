@@ -12,7 +12,9 @@
  *
  * @nghtmlattribute {null} nag-validate-required
  */
-angular.module('nag.form.validate.required', [])
+angular.module('nag.form.validate.required', [
+  'nag.dataValidation'
+])
 .directive('nagValidateRequired', [
   'nagDataValidation',
   function(nagDataValidation) {

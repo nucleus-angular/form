@@ -4,7 +4,9 @@
  * @module nag.form.validate.equals
  * @ngdirective nagValidateEquals
  */
-angular.module('nag.form.validate.equals', [])
+angular.module('nag.form.validate.equals', [
+  'nag.dataValidation'
+])
 .directive('nagValidateEquals', [
   'nagDataValidation',
   function(nagDataValidation) {

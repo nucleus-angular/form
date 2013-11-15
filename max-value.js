@@ -12,7 +12,9 @@
  *
  * @nghtmlattribute {number} nag-validate-max-value The maximum value
  */
-angular.module('nag.form.validate.maxValue', [])
+angular.module('nag.form.validate.maxValue', [
+  'nag.dataValidation'
+])
 .directive('nagValidateMaxValue', [
   'nagDataValidation',
   function(nagDataValidation) {
@@ -21,7 +23,7 @@ angular.module('nag.form.validate.maxValue', [])
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.validate('maxValue', value, attributes.nagValidateMax) === true) {
+          if(nagDataValidation.validate('maxValue', value, attributes.nagValidateMaxValue) === true) {
             controller.$setValidity('nagMaxValue', true);
           } else {
             controller.$setValidity('nagMaxValue', false);

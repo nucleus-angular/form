@@ -12,7 +12,9 @@
  *
  * @nghtmlattribute {number} nag-validate-min-length The minimum length
  */
-angular.module('nag.form.validate.minLength', [])
+angular.module('nag.form.validate.minLength', [
+  'nag.dataValidation'
+])
 .directive('nagValidateMinLength', [
   'nagDataValidation',
   function(nagDataValidation) {
@@ -21,7 +23,7 @@ angular.module('nag.form.validate.minLength', [])
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.validate('minLength', value, attributes.nagValidateMin) === true) {
+          if(nagDataValidation.validate('minLength', value, attributes.nagValidateMinLength) === true) {
             controller.$setValidity('nagMinLength', true);
           } else {
             controller.$setValidity('nagMinLength', false);

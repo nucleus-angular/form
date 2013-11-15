@@ -1,0 +1,204 @@
+<div class="home-page">
+  <header>Resettable Form</header>
+  <form name="resettable" data-ut="resettable">
+    {{ $id }}
+    <ul>
+      <li>
+        <label for="first-name">
+          First Name: <input id="first-name" ng-model="resettableObject.firstName" name="firstName" type="text" />
+        </label>
+      </li>
+      <li>
+        <label for="last-name">
+          Last Name: <input id="last-name" ng-model="resettableObject.lastName" name="lastName" type="text" />
+        </label>
+      </li>
+      <li>
+        <button>Submit</button>
+          <button ng-click="resetResettableForm()" data-ut="reset-resettable">Reset</button>
+      </li>
+    </ul>
+  </form>
+
+  <header>Second Resettable Form</header>
+  <form name="secondResettable" data-ut="second-resettable">
+    {{ $id }}
+    <ul>
+      <li>
+        <label for="first-name">
+          First Name: <input id="first-name" ng-model="secondResettableObject.firstName" name="firstName" type="text" />
+        </label>
+      </li>
+      <li>
+        <label for="last-name">
+          Last Name: <input id="last-name" ng-model="secondResettableObject.lastName" name="lastName" type="text" />
+        </label>
+      </li>
+      <li>
+        <button>Submit</button>
+          <button ng-click="resetSecondResettableForm()" data-ut="reset-second-resettable">Reset</button>
+      </li>
+    </ul>
+  </form>
+
+  <header>Input Element</header>
+  <form name="inputElement" data-ut="input-element">
+    {{ $id }}
+    <ul>
+      <li>
+        <div nag-input-element data-ut="no-additional-data">
+          <label for="first-name">
+            First Name: <input id="first-name" ng-model="inputElementObject.firstName" name="firstName" type="text" nag-input />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-icon-position="before" data-ut="additional-data-icons-before">
+          <label for="middle-name">
+            Middle Name: <input id="middle-name" ng-model="inputElementObject.middleName" name="middleName" type="text" nag-input />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-icon-position="after" data-ut="additional-data-icons-after">
+          <label for="last-name">
+            Last Name: <input id="last-name" ng-model="inputElementObject.lastName" name="lastName" type="text" nag-input />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-message-display="block" data-ut="additional-data-message-block">
+          <label for="email">
+            Email: <input id="email" ng-model="inputElementObject.email" name="email" type="text" nag-input />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-message-display="inline" data-ut="additional-data-message-inline">
+          <label for="username">
+            Username: <input id="username" ng-model="inputElementObject.username" name="username" type="text" nag-input />
+          </label>
+        </div>
+      </li>
+      <li>
+        <button>Submit</button>
+      </li>
+    </ul>
+  </form>
+
+  <header>Validation</header>
+  <form name="validation" data-ut="validation">
+    {{ $id }}
+    <ul>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="show-success-with-data-on-load">
+          <label for="first-name">
+            First Name: <input id="first-name" ng-model="validationObject.firstName" name="firstName" type="text" nag-input nag-validate-required />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="show-nothing-on-load">
+          <label for="middle-name">
+            Middle Name: <input id="middle-name" ng-model="validationObject.middleName" name="middleName" type="text" nag-input nag-validate-required />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="required">
+          <label for="last-name">
+            Last Name: <input id="last-name" ng-model="validationObject.lastName" name="lastName" type="text" nag-input nag-validate-required />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="show-error-with-data-on-load">
+          <label for="email">
+            Email: <input id="email" ng-model="validationObject.email" name="" type="text" nag-input nag-validate-email />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="email">
+          <label for="email2">
+            Email2: <input id="email2" ng-model="validationObject.email2" name="" type="text" nag-input nag-validate-email />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="min-length">
+          <label for="username">
+            Username: <input id="username" ng-model="validationObject.username" name="username" type="text" nag-input nag-validate-min-length="5" />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="match1">
+          <label for="password">
+            Password: <input id="password" ng-model="validationObject.password" name="password" type="text" nag-input nag-validate-match="validationObject.confirmPassword" />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="match2">
+          <label for="confirm-password">
+            Confirm Password: <input id="confirm-password" ng-model="validationObject.confirmPassword" name="confirmPassword" type="text" nag-input nag-validate-match="validationObject.password" />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="equals">
+          <label for="equals">
+            Equals: <input id="equals" ng-model="validationObject.equals" name="equals" type="text" nag-input nag-validate-equals="equals" />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="max-length">
+          <label for="max-length">
+            Max Length: <input id="max-length" ng-model="validationObject.maxLength" name="maxLength" type="text" nag-input nag-validate-max-length="10" />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="max-value">
+          <label for="max-value">
+            Max Value: <input id="max-value" ng-model="validationObject.maxValue" name="maxValue" type="text" nag-input nag-validate-max-value="10" />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="min-value">
+          <label for="min-value">
+            Min Value: <input id="min-value" ng-model="validationObject.minValue" name="minValue" type="text" nag-input nag-validate-min-value="5" />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="range-length">
+          <label for="range-length">
+            Range Length: <input id="range-length" ng-model="validationObject.rangeLength" name="rangeLength" type="text" nag-input nag-validate-range-length="{min: 5, max: 10}" />
+          </label>
+        </div>
+      </li>
+      <li>
+        <div nag-input-element data-show-additional-data="true" data-ut="range-value">
+          <label for="range-value">
+            Range Value: <input id="range-value" ng-model="validationObject.rangeValue" name="rangeValue" type="text" nag-input nag-validate-range-value="{min: 5, max: 10}" />
+          </label>
+        </div>
+      </li>
+      <li>
+        <button>Submit</button>
+      </li>
+    </ul>
+  </form>
+
+  <header>Form Values</header>
+  <ul data-ut="values">
+    <li data-ut="resettable-value">Resettable: {{ resettableObject | json }}</li>
+    <li data-ut="second-resettable-value">Second Resettable: {{ secondResettableObject | json }}</li>
+    <li data-ut="input-element-value">Input Element: {{ inputElementObject | json }}</li>
+    <li data-ut="input-element-value">Validation: {{ validationObject | json }}</li>
+  </ul>
+</div>

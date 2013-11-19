@@ -17,7 +17,7 @@ angular.module('nag.form.helper', [])
        * @method reset
        *
        * @param {object} formController The form controller you want to reset
-       * @param {object} [defaultValues] Key/Value pairing ofefault values to use when reseting the form, the key need to match the form input name
+       * @param {object} [defaultValues] Key/Value pairing of default values to use when resetting the form, the key need to match the form input name
        */ 
       reset: function(formController, defaultValues) {
         for(var field in formController) {
@@ -43,6 +43,7 @@ angular.module('nag.form.helper', [])
         }
 
         formController.$setPristine();
+        $rootScope.$broadcast('NagForm[' + formController.$name + ']/reset', formController);
       }
     };
   }

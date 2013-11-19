@@ -9,6 +9,15 @@ module.exports = {
     .done();
   },
 
+  'should trigger event when resetting form': function(test) {
+    test.open('http://localhost:3000/home')
+    .wait(500)
+    .click('[data-ut="reset-resettable"]')
+      .assert.visible('[data-ut="resettable-reset-triggered"]', 'event was triggered')
+      .assert.text('[data-ut="resettable-reset-triggered"]', 'reset trigger for form: resettable', 'event was triggered')
+    .done();
+  },
+
   'should not effect other form when reset another on the same page': function(test) {
     test.open('http://localhost:3000/home')
     .wait(500)

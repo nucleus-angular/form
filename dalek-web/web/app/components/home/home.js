@@ -17,6 +17,7 @@ angular.module('app.home.home', [
   }
 ])
 .controller('HomeCtrl', ['$scope', '$rootScope', 'nagFormHelper', function($scope, $rootScope, nagFormHelper) {
+  $scope.eventData;
   $scope.resettableDefaults = {
     firstName: 'first name',
     lastName: null
@@ -29,6 +30,10 @@ angular.module('app.home.home', [
   $scope.resetResettableForm = function() {
     nagFormHelper.reset($scope.resettable, $scope.resettableDefaults);
   };
+
+  $rootScope.$on('NagForm[resettable]/reset', function(self, formController) {
+    $scope.eventData = 'reset trigger for form: ' + formController.$name;
+  });
 
   $scope.secondResettableDefaults = {
     firstName: null,

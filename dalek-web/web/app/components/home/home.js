@@ -31,7 +31,7 @@ angular.module('app.home.home', [
     nagFormHelper.reset($scope.resettable, $scope.resettableDefaults);
   };
 
-  $rootScope.$on('NagForm[resettable]/reset', function(self, formController) {
+  $rootScope.$on('NagForm[resettable]/resetted', function(self, formController) {
     $scope.eventData = 'reset trigger for form: ' + formController.$name;
   });
 
@@ -45,7 +45,7 @@ angular.module('app.home.home', [
   };
 
   $scope.resetSecondResettableForm = function() {
-    nagFormHelper.reset($scope.secondResettable, $scope.secondResettableDefaults);
+    $rootScope.$broadcast('NagForm[secondResettable]/reset', $scope.secondResettableDefaults);
   };
 
   $scope.inputElementObject = {

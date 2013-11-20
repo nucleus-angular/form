@@ -22,7 +22,7 @@
   </form>
 
   <header>Second Resettable Form</header>
-  <form name="secondResettable" data-ut="second-resettable">
+  <form name="secondResettable" data-ut="second-resettable" nag-resettable-form>
     {{ $id }}
     <ul>
       <li>
@@ -37,7 +37,7 @@
       </li>
       <li>
         <button>Submit</button>
-          <button ng-click="resetSecondResettableForm()" data-ut="reset-second-resettable">Reset</button>
+          <button ng-click="resetSecondResettableForm()" data-ut="reset-second-resettable">Reset (with event)</button>
       </li>
     </ul>
   </form>

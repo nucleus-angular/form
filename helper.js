@@ -43,7 +43,7 @@ angular.module('nag.form.helper', [])
         }
 
         formController.$setPristine();
-        $rootScope.$broadcast('NagForm[' + formController.$name + ']/reset', formController);
+        $rootScope.$broadcast('NagForm[' + formController.$name + ']/resetted', formController);
       }
     };
   }

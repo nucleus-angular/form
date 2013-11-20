@@ -25,5 +25,13 @@ module.exports = {
       .assert.text('[data-ut="resettable-value"]', 'Resettable: { "firstName": "first name", "lastName": null }', 'resettable table was resetted')
       .assert.text('[data-ut="second-resettable-value"]', 'Second Resettable: { "firstName": "first name2", "lastName": null }', 'second resettable table was not resetted')
     .done();
+  },
+
+  'should be able to reset form using an event': function(test) {
+    test.open('http://localhost:3000/home')
+    .wait(500)
+    .click('[data-ut="reset-second-resettable"]')
+      .assert.text('[data-ut="second-resettable-value"]', 'Second Resettable: { "firstName": null, "lastName": "last name" }', 'second resettable table was resetted')
+    .done();
   }
 }

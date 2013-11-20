@@ -27,5 +27,6 @@ angular.module('nag.form', [
   'nag.form.inputElement',
   'nag.form.input',
   'nag.form.helper',
-  'nag.form.validate'
+  'nag.form.validate',
+  'nag.form.resettable'
 ]);

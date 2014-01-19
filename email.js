@@ -11,18 +11,15 @@
  *
  * @nghtmlattribute {null} nag-validate-email
  */
-angular.module('nag.form.validate.email', [
-  'nag.dataValidation'
-])
+angular.module('nag.form.validate.email', [])
 .directive('nagValidateEmail', [
-  'nagDataValidation',
-  function(nagDataValidation) {
+  function() {
     return {
       restrict: 'A',
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.validate('email', value) === true) {
+          if(dataValidation.validate('email', value) === true) {
             controller.$setValidity('nagEmail', true);
           } else {
             controller.$setValidity('nagEmail', false);

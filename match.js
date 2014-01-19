@@ -13,12 +13,9 @@
  *
  * @nghtmlattribute {string} nag-validate-match The name of the model for the form input element that this form input element should match
  */
-angular.module('nag.form.validate.match', [
-  'nag.dataValidation'
-])
+angular.module('nag.form.validate.match', [])
 .directive('nagValidateMatch', [
-  'nagDataValidation',
-  function(nagDataValidation) {
+  function() {
     return {
       restrict: 'A',
       require: 'ngModel',
@@ -26,7 +23,7 @@ angular.module('nag.form.validate.match', [
         var validate = function(value) {
           var match = scope.$eval(attributes.nagValidateMatch);
 
-          if(nagDataValidation.validate('match',value, match) === true) {
+          if(dataValidation.validate('match',value, match) === true) {
             controller.$setValidity('nagMatch', true);
           } else {
             controller.$setValidity('nagMatch', false);

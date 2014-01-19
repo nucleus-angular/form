@@ -12,18 +12,15 @@
  *
  * @nghtmlattribute {null} nag-validate-required
  */
-angular.module('nag.form.validate.required', [
-  'nag.dataValidation'
-])
+angular.module('nag.form.validate.required', [])
 .directive('nagValidateRequired', [
-  'nagDataValidation',
-  function(nagDataValidation) {
+  function() {
     return {
       restrict: 'A',
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.validate('notEmpty', value) === true) {
+          if(dataValidation.validate('notEmpty', value) === true) {
             controller.$setValidity('nagRequired', true);
           } else {
             controller.$setValidity('nagRequired', false);

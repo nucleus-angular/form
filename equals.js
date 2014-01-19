@@ -4,18 +4,15 @@
  * @module nag.form.validate.equals
  * @ngdirective nagValidateEquals
  */
-angular.module('nag.form.validate.equals', [
-  'nag.dataValidation'
-])
+angular.module('nag.form.validate.equals', [])
 .directive('nagValidateEquals', [
-  'nagDataValidation',
-  function(nagDataValidation) {
+  function() {
     return {
       restrict: 'A',
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.validate('match', value, attributes.nagValidateEquals) === true) {
+          if(dataValidation.validate('match', value, attributes.nagValidateEquals) === true) {
             controller.$setValidity('nagEquals', true);
           } else {
             controller.$setValidity('nagEquals', false);

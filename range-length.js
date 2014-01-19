@@ -12,19 +12,16 @@
  *
  * @nghtmlattribute {object} nag-validate-range-length An object with a min and max property
  */
-angular.module('nag.form.validate.rangeLength', [
-  'nag.dataValidation'
-])
+angular.module('nag.form.validate.rangeLength', [])
 .directive('nagValidateRangeLength', [
-  'nagDataValidation',
-  function(nagDataValidation) {
+  function() {
     return {
       restrict: 'A',
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var options = scope.$eval(attributes.nagValidateRangeLength);
         var validate = function(value) {
-          if(nagDataValidation.validate('rangeLength', value, options.min, options.max) === true) {
+          if(dataValidation.validate('rangeLength', value, options.min, options.max) === true) {
             controller.$setValidity('nagRangeLength', true);
           } else {
             controller.$setValidity('nagRangeLength', false);

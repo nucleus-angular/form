@@ -12,18 +12,15 @@
  *
  * @nghtmlattribute {number} nag-validate-min-value The minimum value
  */
-angular.module('nag.form.validate.minValue', [
-  'nag.dataValidation'
-])
+angular.module('nag.form.validate.minValue', [])
 .directive('nagValidateMinValue', [
-  'nagDataValidation',
-  function(nagDataValidation) {
+  function() {
     return {
       restrict: 'A',
       require: 'ngModel',
       link: function(scope, element, attributes, controller) {
         var validate = function(value) {
-          if(nagDataValidation.validate('minValue', value, attributes.nagValidateMinValue) === true) {
+          if(dataValidation.validate('minValue', value, attributes.nagValidateMinValue) === true) {
             controller.$setValidity('nagMinValue', true);
           } else {
             controller.$setValidity('nagMinValue', false);

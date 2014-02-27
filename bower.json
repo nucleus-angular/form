@@ -6,10 +6,9 @@
     "data-validation": "master"
   },
   "devDependencies": {
-    "jquery": "1.10.x",
+    "jquery": "2.x.x",
     "lodash": "2.x.x",
     "moment": "2.x.x",
-    "modernizr": "2.x.x",
     "angular": "1.2.x",
     "angular-animate": "1.2.x",
     "angular-ui-router": "0.2.7",

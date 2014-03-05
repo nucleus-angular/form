@@ -1,0 +1,10 @@
+{
+  "tests": [
+    "dalek/helper.js",
+    "dalek/input-element.js",
+    "dalek/validation.js"
+  ],
+  "browser": [
+    "chrome"
+  ]
+}

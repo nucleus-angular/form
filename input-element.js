@@ -16,12 +16,17 @@ angular.module('nag.form.inputElement', [])
       restrict: 'EA',
       transclude: true,
       templateUrl: function(element, attributes) {
+        var templatePath = '';
+
         if(attributes.showAdditionalData !== 'true') {
-          return 'components/nucleus-angular-form/assets/templates/input-element-plain.html';
+          templatePath = 'components/nucleus-angular-form/assets/templates/input-element-plain.html';
+        } else if(attributes.iconPosition === 'after') {
+          templatePath = 'components/nucleus-angular-form/assets/templates/input-element-icons-after.html';
+        } else {
+          templatePath = 'components/nucleus-angular-form/assets/templates/input-element-icons-before.html';
         }
 
-        var iconsPosition = attributes.iconPosition === 'after' ? 'after' : 'before';
-        return 'components/nucleus-angular-form/assets/templates/input-element-icons-' + iconsPosition + '.html';
+        return templatePath;
       },
       scope: {
         showAdditionalData: '@',

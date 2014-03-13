@@ -8,7 +8,7 @@
  * @module nag.form.inputElement
  * @ngdirective nagInputElement
  */
-angular.module('nag.form.inputElement', [])
+angular.module('nag.form')
 .directive('nagInputElement', [
   '$compile',
   function($compile) {

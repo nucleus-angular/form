@@ -6,7 +6,7 @@
  * @module nag.form.helper
  * @ngdirective nagFormHelper
  */
-angular.module('nag.form.helper', [])
+angular.module('nag.form')
 .factory('nagFormHelper', [
   '$rootScope',
   function($rootScope) {

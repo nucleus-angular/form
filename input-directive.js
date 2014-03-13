@@ -12,7 +12,7 @@
  *
  * @nghtmlattribute nag-input
  */
-angular.module('nag.form.input', [])
+angular.module('nag.form')
 .directive('nagInput', [
   function() {
     return {

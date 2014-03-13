@@ -8,9 +8,7 @@
  *
  * @nghtmlattribute {null} nag-resttable-form
  */
-angular.module('nag.form.resettable', [
-  'nag.form.helper'
-])
+angular.module('nag.form')
 .directive('nagResettableForm', [
   '$rootScope',
   'nagFormHelper',

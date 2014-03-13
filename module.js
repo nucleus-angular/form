@@ -24,9 +24,5 @@ angular.module('nag.form.validate', [
  * @module nag.form
  */
 angular.module('nag.form', [
-  'nag.form.inputElement',
-  'nag.form.input',
-  'nag.form.helper',
-  'nag.form.validate',
-  'nag.form.resettable'
+  'nag.form.validate'
 ]);

@@ -7,7 +7,7 @@
  *
  * @todo: figure out how to test this
  *
- * @module nag.form.input
+ * @module nag.form
  * @ngdirective nagInput
  *
  * @nghtmlattribute nag-input

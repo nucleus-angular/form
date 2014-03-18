@@ -3,7 +3,7 @@
  *
  * Add form reset functionality to the current scope.
  *
- * @module nag.form.resettable
+ * @module nag.form
  * @ngdirective nagResettableForm
  *
  * @nghtmlattribute {null} nag-resttable-form

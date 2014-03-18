@@ -5,7 +5,7 @@
  *
  * EXAMPLE TODO
  *
- * @module nag.form.inputElement
+ * @module nag.form
  * @ngdirective nagInputElement
  */
 angular.module('nag.form')

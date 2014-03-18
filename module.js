@@ -1,5 +1,17 @@
 /**
- * This is a module collection for all for validators
+ * # Form Validators
+ *
+ * Validators include:
+ * - email
+ * - match
+ * - max value
+ * - min value
+ * - range value
+ * - max length
+ * - min length
+ * - range length
+ * - required
+ * - equals
  *
  * @module nag.form.validate
  */

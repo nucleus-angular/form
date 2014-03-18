@@ -3,7 +3,7 @@
  *
  * Provide functionality that makes it easier to work with forms.
  *
- * @module nag.form.helper
+ * @module nag.form
  * @ngdirective nagFormHelper
  */
 angular.module('nag.form')

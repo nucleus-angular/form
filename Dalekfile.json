@@ -4,6 +4,7 @@
     "dalek/input-element.js",
     "dalek/validation.js"
   ],
+  "logLevel": "1",
   "browser": [
     "chrome"
   ]

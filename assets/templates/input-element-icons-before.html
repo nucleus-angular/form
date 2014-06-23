@@ -1,5 +1,5 @@
-<span class="container" ng-class="{invalid: modelController.$invalid && !sPlain && (modelController.$dirty || modelController.$viewValue != null), valid: modelController.$valid && !isPlain && (modelController.$dirty || modelController.$viewValue != null), plain: modelController.$pristine || isPlain}">
-  <span class="icons"><span class="valid-icon" ng-show="(modelController.$dirty || modelController.$viewValue != null) && modelController.$valid"></span><span class="invalid-icon" ng-show="(modelController.$dirty || modelController.$viewValue != null) && modelController.$invalid"></span></span>
+<span class="container" ng-class="{invalid: modelController.$invalid && !sPlain && (modelController.$dirty || modelController.$viewValue), valid: modelController.$valid && !isPlain && (modelController.$dirty || modelController.$viewValue), plain: modelController.$pristine || isPlain}">
+  <span class="icons"><span class="valid-icon" ng-show="(modelController.$dirty || modelController.$viewValue) && modelController.$valid"></span><span class="invalid-icon" ng-show="(modelController.$dirty || modelController.$viewValue) && modelController.$invalid"></span></span>
   <span class="content" ng-transclude></span>
-  <div class="input-message" ng-class="{'error-text': modelController.$invalid, 'success-text': modelController.$valid, 'inline': messageInline}" ng-show="modelController.$dirty || modelController.$viewValue != null">{{ getInputMessage() }}</div>
+  <div class="input-message" ng-class="{'error-text': modelController.$invalid, 'success-text': modelController.$valid, 'inline': messageInline}" ng-show="modelController.$dirty || modelController.$viewValue">{{ getInputMessage() }}</div>
 </span>

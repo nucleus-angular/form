@@ -1,7 +1,7 @@
 <div class="home-page">
   <header>Resettable Form</header>
   <div ng-if="eventData" data-ut="resettable-reset-triggered">{{ eventData }}</div>
-  <form name="resettable" data-ut="resettable">
+  <form name="resettable" data-ut="resettable" class="compact">
     {{ $id }}
     <ul>
       <li>
@@ -22,7 +22,7 @@
   </form>
 
   <header>Second Resettable Form</header>
-  <form name="secondResettable" data-ut="second-resettable" nag-resettable-form>
+  <form name="secondResettable" data-ut="second-resettable" class="compact" nag-resettable-form>
     {{ $id }}
     <ul>
       <li>
@@ -43,7 +43,7 @@
   </form>
 
   <header>Input Element</header>
-  <form name="inputElement" data-ut="input-element">
+  <form name="inputElement" data-ut="input-element" class="compact">
     {{ $id }}
     <ul>
       <li>
@@ -88,7 +88,7 @@
   </form>
 
   <header>Validation</header>
-  <form name="validation" data-ut="validation">
+  <form name="validation" data-ut="validation" class="compact">
     {{ $id }}
     <ul>
       <li>

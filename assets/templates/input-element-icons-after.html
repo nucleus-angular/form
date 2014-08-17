@@ -1,5 +1,5 @@
 <span class="container" ng-class="{invalid: modelController.$invalid && !isPlain && (modelController.$dirty || modelController.$viewValue), valid: modelController.$valid && !isPlain && (modelController.$dirty || modelController.$viewValue), plain: modelController.$pristine || isPlain}">
   <span class="content" ng-transclude></span>
-  <span class="icons"><span class="valid-icon" ng-show="(modelController.$dirty || modelController.$viewValue) && modelController.$valid"></span><span class="invalid-icon" ng-show="(modelController.$dirty || modelController.$viewValue) && modelController.$invalid"></span></span>
+  <span class="icons"><span ng-show="(modelController.$dirty || modelController.$viewValue) && modelController.$valid"> <img class="icon svg-icon" src="/components/nucleus-angular-sass-framework/assets/svg/open-iconic/svg/check.svg" /></span><span ng-show="(modelController.$dirty || modelController.$viewValue) && modelController.$invalid"><img class="icon svg-icon" src="/components/nucleus-angular-sass-framework/assets/svg/open-iconic/svg/x.svg" /></span></span>
   <div class="input-message" ng-class="{'error-text': modelController.$invalid, 'success-text': modelController.$valid, 'inline': messageInline}" ng-show="modelController.$dirty || modelController.$viewValue">{{ getInputMessage() }}</div>
 </span>

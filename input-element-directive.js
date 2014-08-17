@@ -72,6 +72,13 @@ angular.module('nag.form')
             scope.messageInline = (attributes.messageDisplay !== 'block' ? true : false);
           },
           post: function(scope, element, attributes) {
+            //we need to make changes to the element with the directive
+            element.removeAttr('nag-input-element');
+
+            var newElement = $($compile(element[0].outerHTML)(scope));
+            element.replaceWith(newElement);
+            element = newElement;
+
             /**
              * Retrieve the input message
              *
@@ -103,7 +110,17 @@ angular.module('nag.form')
               }
 
               return returnValue;
-            }
+            };
+
+            //TODO: research: this seems to work however I have not idea and it only gets called 2 times even though it can take a while to load large tree
+            var interval = setInterval(function() {
+              //console.log('test');
+              if(element.find('.icons img').length > 0) {
+                //console.log('test2');
+                clearInterval(interval);
+                SVGInjector(element.find('.icons img').get());
+              }
+            }, 0);
           }
         };
       }

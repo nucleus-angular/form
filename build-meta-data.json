@@ -1,0 +1,157 @@
+{
+  "workingFiles": {
+    "dalek-web/web/app/styles/main.css": {
+      "fileHash": "e8064de1b8e556e9e0afd791a4ed0b23d082d04f",
+      "compiledFilePath": "dalek-web/web/app/build/e2bb8133fe4122eee0a16fb74c497eff11ae964f-main.css"
+    },
+    "dalek-web/web/components/moment/moment.js": {
+      "fileHash": "9c6240d7bcebf222299f4247449307f59311e58a",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/data-validation/data-validation.js": {
+      "fileHash": "afaf1772c166e0a2616ef386a2a807d6e98d07fc",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/jquery/dist/jquery.js": {
+      "fileHash": "8d55aabf2b76486cc311fdc553a3613cad46aa3f",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/angular/angular.js": {
+      "fileHash": "60ea11c3c5634c5494cbb55a231fdb95a219112f",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/angular-ui-router/release/angular-ui-router.js": {
+      "fileHash": "d61b370665924b5eca532edd454954e5d3bea20f",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-core/module.js": {
+      "fileHash": "d4ed2c9cb94848602338755386877b98f09a81b0",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-core/helper-factory.js": {
+      "fileHash": "89d8017c041e4be49e53bc8a86f226e3c6a76e8d",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-core/defaults-factory.js": {
+      "fileHash": "cb3df1596d058804c13932b43548d737b73aa4ac",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/module.js": {
+      "fileHash": "50e4b9e3a32dda572ff5307e27730f24321899a0",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/email-directive.js": {
+      "fileHash": "ea321eecc93697e26cc54bcf0c3431817d5e9740",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/equals-directive.js": {
+      "fileHash": "10a2587c940cc1a34108bc7d388707de454fa791",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/helper-factory.js": {
+      "fileHash": "81054ecc2918ddfe91a3881be7b02d43199b8ba1",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/input-element-directive.js": {
+      "fileHash": "ae5ad9c860b5086890aac4023457736bd7b6bd02",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/input-directive.js": {
+      "fileHash": "34917240d0b8d66e4361cada5e9aae18b16f4fbf",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/match-directive.js": {
+      "fileHash": "1e3ec684b151bc99ceca792aa8d24ee4f9b67391",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/max-length-directive.js": {
+      "fileHash": "7f74959e9e594809835add781df183e4651ca5eb",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/max-value-directive.js": {
+      "fileHash": "a7d8b7587794851802c94df62c290c3e27695dda",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/min-length-directive.js": {
+      "fileHash": "9d1abb83da7e671bc03384b950d7e3594feb1ac6",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/min-value-directive.js": {
+      "fileHash": "64c267c00b5b94c7a931a2cb877b4d90fb8ed853",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/range-length-directive.js": {
+      "fileHash": "f5b555ef7af60ad36b7ecfc5e484c48eddab2198",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/range-value-directive.js": {
+      "fileHash": "9186d61ad22fbecb6df6ac8fb45f3c9e61b79eab",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/required-directive.js": {
+      "fileHash": "af082d2545766a7360ed83ac4a217b2c97ba1539",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/components/nucleus-angular-form/resettable-directive.js": {
+      "fileHash": "d18223ea8e91f43db4c833210329e5bd0e1eeef7",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    },
+    "dalek-web/web/app/application.js": {
+      "fileHash": "53b46c5d7876d7bd6fc171a6c0ceed69c846f72e",
+      "compiledFilePath": "dalek-web/web/app/build/f20653ebced017f21c2a36cf3d406c1a57f813e7-application.js"
+    },
+    "dalek-web/web/app/components/core/module.js": {
+      "fileHash": "e4129601066caf1f05886485bae0bc3ec2780c31",
+      "compiledFilePath": "dalek-web/web/app/build/f20653ebced017f21c2a36cf3d406c1a57f813e7-application.js"
+    },
+    "dalek-web/web/app/components/home/module.js": {
+      "fileHash": "cd063cbe8648535c5e69e415d07230867a33afb0",
+      "compiledFilePath": "dalek-web/web/app/build/f20653ebced017f21c2a36cf3d406c1a57f813e7-application.js"
+    },
+    "dalek-web/web/app/components/home/home.js": {
+      "fileHash": "b92040fdb83e2494233dd679071d077bb184cc9e",
+      "compiledFilePath": "dalek-web/web/app/build/f20653ebced017f21c2a36cf3d406c1a57f813e7-application.js"
+    },
+    "dalek-web/web/components/svg-injector/dist/svg-injector.min.js": {
+      "fileHash": "ca2f2fdaf43a355d8d3c6cdf0e5e9d2ce714395e",
+      "compiledFilePath": "dalek-web/web/app/build/705fecc0cd2c58525651e630902f43e67960e162-libraries.js"
+    }
+  },
+  "buildFiles": {
+    "main.css": [
+      "dalek-web/web/app/styles/main.css"
+    ],
+    "libraries.js": [
+      "dalek-web/web/components/svg-injector/dist/svg-injector.min.js",
+      "dalek-web/web/components/moment/moment.js",
+      "dalek-web/web/components/data-validation/data-validation.js",
+      "dalek-web/web/components/jquery/dist/jquery.js",
+      "dalek-web/web/components/angular/angular.js",
+      "dalek-web/web/components/angular-ui-router/release/angular-ui-router.js",
+      "dalek-web/web/components/nucleus-angular-core/module.js",
+      "dalek-web/web/components/nucleus-angular-core/helper-factory.js",
+      "dalek-web/web/components/nucleus-angular-core/defaults-factory.js",
+      "dalek-web/web/components/nucleus-angular-form/module.js",
+      "dalek-web/web/components/nucleus-angular-form/email-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/equals-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/helper-factory.js",
+      "dalek-web/web/components/nucleus-angular-form/input-element-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/input-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/match-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/max-length-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/max-value-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/min-length-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/min-value-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/range-length-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/range-value-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/required-directive.js",
+      "dalek-web/web/components/nucleus-angular-form/resettable-directive.js"
+    ],
+    "application.js": [
+      "dalek-web/web/app/application.js",
+      "dalek-web/web/app/components/core/module.js",
+      "dalek-web/web/app/components/home/module.js",
+      "dalek-web/web/app/components/home/home.js"
+    ]
+  }
+}

@@ -72,13 +72,6 @@ angular.module('nag.form')
             scope.messageInline = (attributes.messageDisplay !== 'block' ? true : false);
           },
           post: function(scope, element, attributes) {
-            //we need to make changes to the element with the directive
-            element.removeAttr('nag-input-element');
-
-            var newElement = $($compile(element[0].outerHTML)(scope));
-            element.replaceWith(newElement);
-            element = newElement;
-
             /**
              * Retrieve the input message
              *
@@ -111,6 +104,17 @@ angular.module('nag.form')
 
               return returnValue;
             };
+
+            //need to change the main element validation class with the modelController changes
+            scope.$watchCollection('modelController', function(newValue, oldValue) {
+              if((newValue.$dirty || newValue.$viewValue) && newValue.$valid) {
+                element.addClass('valid').removeClass('invalid');
+              } else if((newValue.$dirty || newValue.$viewValue) && newValue.$invalid) {
+                element.addClass('invalid').removeClass('valid');
+              } else {
+                element.removeClass('valid').removeClass('invalid');
+              }
+            });
 
             //TODO: research: this seems to work however I have not idea and it only gets called 2 times even though it can take a while to load large tree
             var interval = setInterval(function() {

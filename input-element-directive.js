@@ -3,6 +3,13 @@
  *
  * This directive will wrap any for input element up with structure for displaying form errors.
  *
+ * It is important to note that you must define 2 angular `value()` in order to use this directive:
+ *
+ * - nagFormValidIconPath
+ * - nagFormInvalidIconPath
+ *
+ * Which are expected to be SVG files.
+ *
  * EXAMPLE TODO
  *
  * @module nag.form
@@ -11,122 +18,120 @@
 angular.module('nag.form')
 .directive('nagInputElement', [
   '$compile',
-  function($compile) {
+  '$injector',
+  function($compile, $injector) {
+    //todo: this needs to be configurable
+    var errorMessages = {
+      nagRequired: 'Required',
+      nagEmail: 'Must be valid email',
+      nagEquals: "Value not what it should be",
+      nagMinValue: 'Value to small',
+      nagMaxValue: 'Value to big',
+      nagRangeValue: 'Not within range',
+      nagMinLength: 'Length to small',
+      nagMaxLength: 'Length to big',
+      nagRangeLength: 'Not within range',
+      nagMatch: 'Values must match'
+    };
+
     return {
       restrict: 'EA',
       transclude: true,
-      templateUrl: function(element, attributes) {
-        var templatePath = '';
-
-        if(attributes.showAdditionalData !== 'true') {
-          templatePath = 'components/nucleus-angular-form/assets/templates/input-element-plain.html';
-        } else if(attributes.iconPosition === 'after') {
-          templatePath = 'components/nucleus-angular-form/assets/templates/input-element-icons-after.html';
-        } else {
-          templatePath = 'components/nucleus-angular-form/assets/templates/input-element-icons-before.html';
-        }
-
-        return templatePath;
-      },
+      templateUrl: 'components/nucleus-angular-form/assets/templates/input-element.html',
       scope: {
-        showAdditionalData: '@',
-        iconPosition: '@',
-        messageDisplay: '@'
+        showAdditionalData: '@'
       },
       controller: [
-        '$scope',
-        function($scope) {
-          /**
-           * Sets the model for the input element since this directive can not be applied directly to an input element
-           *
-           * @ngdirectivecontroller
-           * @method setModelController
-           *
-           * @param {object} modelController The model controller for the input element
-           */
-          this.setModelController = function(modelController) {
-            $scope.modelController = modelController;
-          }
-        }
+       '$scope',
+       function($scope) {
+         /**
+          * Sets the model for the input element since this directive can not be applied directly to an input element
+          *
+          * @ngdirectivecontroller
+          * @method setModelController
+          *
+          * @param {object} modelController The model controller for the input element
+          */
+         this.setModelController = function(modelController) {
+           $scope.modelController = modelController;
+         }
+       }
       ],
-      compile: function(element, attributes, transclude) {
-        //todo: this needs to be configurable
-        var errorMessages = {
-          nagRequired: 'Required',
-          nagEmail: 'Must be valid email',
-          nagEquals: "Value not what it should be",
-          nagMinValue: 'Value to small',
-          nagMaxValue: 'Value to big',
-          nagRangeValue: 'Not within range',
-          nagMinLength: 'Length to small',
-          nagMaxLength: 'Length to big',
-          nagRangeLength: 'Not within range',
-          nagMatch: 'Values must match'
-        };
+      compile: function(element, attributes) {
+        if(!$injector.has('nagFormValidIconPath') || !$injector.has('nagFormInvalidIconPath')) {
+          throw new Error("You must define a SVG paths for `nagFormValidIconPath` and `nagFormValidIconPath` to use the input element directive");
+        }
 
         element.addClass('input-element');
 
-        return {
-          pre: function(scope, element, attributes) {
-            scope.isPlain = (attributes.showAdditionalData !== 'true' ? true : false);
-            scope.messageInline = (attributes.messageDisplay !== 'block' ? true : false);
-          },
-          post: function(scope, element, attributes) {
-            /**
-             * Retrieve the input message
-             *
-             * @ngscope
-             *
-             * @method getInputMessage
-             *
-             * @returns {string} Input message
-             */
-            scope.getInputMessage = function() {
-              var returnValue;
-              var hasError;
+        return function(scope, element, attributes) {
+          scope.validIconPath = $injector.get('nagFormValidIconPath');
+          scope.invalidIconPath = $injector.get('nagFormInvalidIconPath');
 
-              if(scope.modelController) {
-                _.forEach(scope.modelController.$error, function(value, key) {
-                  if(!returnValue && value === true) {
-                    hasError = true;
-                    returnValue = errorMessages[key];
-                  }
-                });
+          /**
+           * Retrieve the input message
+           *
+           * @ngscope
+           *
+           * @method getInputMessage
+           *
+           * @returns {string} Input message
+           */
+          scope.getInputMessage = function() {
+            var returnValue;
+            var hasError;
 
-                if(!returnValue && hasError === true) {
-                  returnValue = 'Invalid';
-                } else if(!returnValue) {
-                  returnValue = 'Valid';
+            if(scope.modelController) {
+              _.forEach(scope.modelController.$error, function(value, key) {
+                if(!returnValue && value === true) {
+                  hasError = true;
+                  returnValue = errorMessages[key];
                 }
-              } else {
-                returnValue = '';
-              }
+              });
 
-              return returnValue;
-            };
-
-            //need to change the main element validation class with the modelController changes
-            scope.$watchCollection('modelController', function(newValue, oldValue) {
-              if((newValue.$dirty || newValue.$viewValue) && newValue.$valid) {
-                element.addClass('valid').removeClass('invalid');
-              } else if((newValue.$dirty || newValue.$viewValue) && newValue.$invalid) {
-                element.addClass('invalid').removeClass('valid');
-              } else {
-                element.removeClass('valid').removeClass('invalid');
+              if(!returnValue && hasError === true) {
+                returnValue = 'Invalid';
+              } else if(!returnValue) {
+                returnValue = 'Valid';
               }
-            });
+            } else {
+              returnValue = '';
+            }
 
-            //TODO: research: this seems to work however I have not idea and it only gets called 2 times even though it can take a while to load large tree
-            var interval = setInterval(function() {
-              //console.log('test');
-              if(element.find('.icons img').length > 0) {
-                //console.log('test2');
-                clearInterval(interval);
-                SVGInjector(element.find('.icons img').get());
-              }
-            }, 0);
-          }
-        };
+            return returnValue;
+          };
+
+          scope.isValid = function() {
+            return (scope.modelController.$dirty || scope.modelController.$viewValue) && scope.modelController.$valid;
+          };
+
+          scope.showIcon = function() {
+            return !scope.modelController.$pristine || scope.modelController.$viewValue;
+          };
+
+          //need to change the main element validation class with the modelController changes
+          scope.$watchCollection('modelController', function(newValue, oldValue) {
+            element.removeClass('valid').removeClass('invalid').removeClass('plain');
+
+            if(newValue.$pristine && !newValue.$viewValue) {
+              element.addClass('plain');
+            } else if((newValue.$dirty || newValue.$viewValue) && newValue.$valid) {
+              element.addClass('valid');
+            } else if((newValue.$dirty || newValue.$viewValue) && newValue.$invalid) {
+              element.addClass('invalid');
+            }
+          });
+
+          //TODO: research: is this the best way to handle this issue
+          var interval = setInterval(function() {
+            //console.log('test');
+            if(element.find('.tooltip img,.icon').length > 0) {
+              //console.log('test2');
+              clearInterval(interval);
+              SVGInjector(element.find('.tooltip img,.icon').get());
+            }
+          }, 0);
+        }
       }
     };
   }

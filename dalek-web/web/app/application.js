@@ -1,7 +1,8 @@
 angular.module('app', [
   'app.core',
   'app.home',
-  'nag.form'
+  'nag.form',
+  'nag.tooltip'
 ])
 .config([
   '$locationProvider',
@@ -12,6 +13,8 @@ angular.module('app', [
     $urlRouterProvider.otherwise('/home');
   }
 ])
+.value('nagFormInvalidIconPath', '/components/nucleus-angular-sass-framework/assets/svg/open-iconic/svg/x.svg')
+.value('nagFormValidIconPath', '/components/nucleus-angular-sass-framework/assets/svg/open-iconic/svg/check.svg')
 .run([
   '$state',
   '$rootScope',

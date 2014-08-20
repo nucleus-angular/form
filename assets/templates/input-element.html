@@ -1,0 +1,8 @@
+<div class="content" ng-transclude></div>
+<div ng-show="showIcon() && !isValid()" nag-tooltip>
+  <div class="handle">
+    <img class="svg-icon" src="{{ invalidIconPath }}" />
+  </div>
+  <div class="content">{{ getInputMessage() }}</div>
+</div>
+<div ng-show="showIcon() && isValid()"><img class="icon svg-icon" src="{{ validIconPath }}" /></div>

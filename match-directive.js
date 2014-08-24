@@ -23,18 +23,16 @@ angular.module('nag.form.validate.match', [])
         var validate = function(value) {
           var match = scope.$eval(attributes.nagValidateMatch);
 
-          if(dataValidation.validate('match',value, match) === true) {
+          if(dataValidation.validate('match',value, match.$viewValue) === true) {
             controller.$setValidity('nagMatch', true);
+            match.$setValidity('nagMatch', true);
           } else {
             controller.$setValidity('nagMatch', false);
+            match.$setValidity('nagMatch', false);
           }
 
           return value;
         };
-
-        scope.$watch(attributes.nagValidateMatch, function(otherModelValue) {
-          controller.$setValidity('nagMatch', controller.$viewValue === otherModelValue);
-        });
 
         controller.$formatters.push(validate);
         controller.$parsers.unshift(validate);

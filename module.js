@@ -30,11 +30,13 @@ angular.module('nag.form.validate', [
 
 /**
  * # Form
- * 
+ *
  * This module include a number components that relate to working with forms and form input elements.
  *
  * @module nag.form
  */
 angular.module('nag.form', [
+  'ngMessages',
+  'nag.core',
   'nag.form.validate'
 ]);

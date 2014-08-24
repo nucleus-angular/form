@@ -1,8 +1,5 @@
-<div class="content" ng-transclude></div>
-<div ng-show="showIcon() && !isValid()" nag-tooltip>
-  <div class="handle">
-    <img class="svg-icon" src="{{ invalidIconPath }}" />
-  </div>
-  <div class="content">{{ getInputMessage() }}</div>
+<div class="input-element">
+  <span ng-transclude></span>
+  <div nag-input-element-validation
+       data-template="/components/nucleus-angular-form/assets/templates/validation.html"></div>
 </div>
-<div ng-show="showIcon() && isValid()"><img class="icon svg-icon" src="{{ validIconPath }}" /></div>

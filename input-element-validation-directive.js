@@ -17,7 +17,8 @@ angular.module('nag.form')
 .directive('nagInputElementValidation', [
   '$injector',
   'nagHelper',
-  function($injector, nagHelper) {
+  'nagSvgHelper',
+  function($injector, nagHelper, nagSvgHelper) {
     return {
       restrict: 'EA',
       template: nagHelper.template,
@@ -26,8 +27,13 @@ angular.module('nag.form')
         element.find('.invalid-indicator').attr('ng-show', attributes.inputName + '.$invalid');
         element.find('[ng-messages-multiple]').attr('ng-messages', attributes.inputName + '.$error');
         element.find('[ng-messages-multiple]').attr('ng-messages-include', $injector.get('nagFormMessagesInclude'));
-        element.find('.handle img').attr('src', $injector.get('nagFormInvalidIconPath'));
-        element.find('.valid-indicator img').attr('src', $injector.get('nagFormValidIconPath'));
+        var svgElement1 = element.find('.handle img').attr('src', $injector.get('nagFormInvalidIconPath'));
+        var svgElement2 = element.find('.valid-indicator img').attr('src', $injector.get('nagFormValidIconPath'));
+
+        nagSvgHelper.inject([
+          svgElement1[0],
+          svgElement2[0]
+        ]);
       }
     };
   }

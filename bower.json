@@ -4,6 +4,7 @@
   "dependencies": {
     "nucleus-angular-core": "master",
     "nucleus-angular-tooltip": "master",
+    "nucleus-angular-svg": "master",
     "data-validation": "master"
   },
   "devDependencies": {
@@ -15,7 +16,6 @@
     "angular-ui-router": "0.2.7",
     "nucleus-angular-sass-framework": "master",
     "bourbon": "3.2.1",
-    "nucleus-angular-svg": "master",
     "svg-injector": "1.1.0"
   }
 }

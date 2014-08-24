@@ -38,5 +38,6 @@ angular.module('nag.form.validate', [
 angular.module('nag.form', [
   'ngMessages',
   'nag.core',
+  'nag.svg',
   'nag.form.validate'
 ]);

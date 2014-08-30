@@ -42,15 +42,14 @@ angular.module('nag.form')
           var selfController = $controllers[0];
           var formController = $controllers[1];
 
-          //When need to use $applyAsync in order for the $valid of the model controller to be set properly
+          //we need to use $applyAsync in order for the $valid of the model controller to be set properly
           $scope.$applyAsync(function() {
             if($attributes.validateOnLoad === 'true') {
-              console.log('update on load');
               updateValidationClass(formController[selfController.modelController.$name].$valid);
             }
           });
 
-          $scope.$watch(formController.$name + '.' + selfController.modelController.$name + '.$pristine', function(newValue) {
+          $scope.$watch(formController.$name + '.' + selfController.modelController.$name + '.$valid', function(newValue) {
             if(formController[selfController.modelController.$name].$dirty) {
               updateValidationClass(formController[selfController.modelController.$name].$valid);
             }

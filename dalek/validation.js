@@ -27,8 +27,8 @@ module.exports = {
   'should not show icon or tooltip for pristine state': function(test) {
     test.open('http://localhost:3000/home')
     .wait(500)
-      .assert.doesntExist('[data-ut="validation"] [data-ut="show-nothing-on-load"] .tooltip')
-      .assert.doesntExist('[data-ut="validation"] [data-ut="show-nothing-on-load"] .icon')
+      .assert.notVisible('[data-ut="validation"] [data-ut="show-nothing-on-load"] .tooltip')
+      .assert.notVisible('[data-ut="validation"] [data-ut="show-nothing-on-load"] .icon')
     .done();
   },
 

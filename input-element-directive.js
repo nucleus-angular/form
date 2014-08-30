@@ -18,27 +18,46 @@ angular.module('nag.form')
   function($injector, nagHelper) {
     return {
       restrict: 'EA',
-      //template: nagHelper.template,
       transclude: true,
+      require: ['nagInputElement', '^form'],
       templateUrl: 'components/nucleus-angular-form/assets/templates/input-element.html',
-      compile: function(element, attributes) {
-        var inputName = attributes.inputName;
-        var ngClass;
+      controller: [function() {
+        this.setModelController = function(modelController) {
+          this.modelController = modelController;
+        }.bind(this);
+      }],
+      compile: function($element, $attributes) {
+        $element.find('.input-element').addClass($element.attr('class'));
+        $element.removeClass();
 
-        if(attributes.validationOnLoad !== 'true') {
-          ngClass = "{'invalid': " + inputName + ".$invalid && " + inputName + ".$dirty, 'valid': " + inputName + ".$valid && " + inputName + ".$dirty}";
-        } else {
-          ngClass = "{'invalid': " + inputName + ".$invalid, 'valid': " + inputName + ".$valid}";
+        return function($scope, $element, $attributes, $controllers) {
+          function updateValidationClass(isValid) {
+            if(isValid === true) {
+              $element.find('.input-element').removeClass('invalid').addClass('valid');
+            } else {
+              $element.find('.input-element').removeClass('valid').addClass('invalid');
+            }
+          }
+
+          var selfController = $controllers[0];
+          var formController = $controllers[1];
+
+          //When need to use $applyAsync in order for the $valid of the model controller to be set properly
+          $scope.$applyAsync(function() {
+            if($attributes.validateOnLoad === 'true') {
+              console.log('update on load');
+              updateValidationClass(formController[selfController.modelController.$name].$valid);
+            }
+          });
+
+          $scope.$watch(formController.$name + '.' + selfController.modelController.$name + '.$pristine', function(newValue) {
+            if(formController[selfController.modelController.$name].$dirty) {
+              updateValidationClass(formController[selfController.modelController.$name].$valid);
+            }
+          });
         }
-
-        element.find('.input-element').attr('ng-class', ngClass);
-
-        if(attributes.validationOnLoad !== 'true') {
-          element.find('[nag-input-element-validation]').attr('ng-if', inputName + '.$dirty');
-        }
-
-        element.find('[nag-input-element-validation]').attr('data-input-name', inputName);
       }
     };
   }
 ]);
+

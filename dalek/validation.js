@@ -211,4 +211,6 @@ module.exports = {
       .assert.visible('[data-ut="validation"] [data-ut="match2"] .tooltip')
     .done();
   }
+
+  //todo: should remove validation if model data is resetted
 };

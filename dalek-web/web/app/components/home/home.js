@@ -26,9 +26,17 @@ angular.module('app.home.home', [
     firstName: null,
     lastName: 'last name'
   };
+  $scope.validationDefaults = {
+    firstName: 'first name4',
+    email: 'test@example'
+  };
 
   $scope.resetResettableForm = function() {
     nagFormHelper.reset($scope.resettable, $scope.resettableDefaults);
+  };
+
+  $scope.resetValidationForm = function() {
+    nagFormHelper.reset($scope.validation, $scope.validationDefaults);
   };
 
   $rootScope.$on('NagForm[resettable]/resetted', function(self, formController) {

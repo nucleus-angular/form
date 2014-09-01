@@ -31,11 +31,15 @@ angular.module('nag.form')
         $element.removeClass();
 
         return function($scope, $element, $attributes, $controllers) {
-          function updateValidationClass(isValid) {
-            if(isValid === true) {
-              $element.find('.input-element').removeClass('invalid').addClass('valid');
-            } else {
-              $element.find('.input-element').removeClass('valid').addClass('invalid');
+          function updateValidationClass(modelController) {
+            $element.find('.input-element').removeClass('invalid valid');
+
+            if($attributes.validateOnLoad === 'true' || modelController.$dirty) {
+              if(modelController.$valid === true) {
+                $element.find('.input-element').removeClass('invalid').addClass('valid');
+              } else {
+                $element.find('.input-element').removeClass('valid').addClass('invalid');
+              }
             }
           }
 
@@ -44,15 +48,11 @@ angular.module('nag.form')
 
           //we need to use $applyAsync in order for the $valid of the model controller to be set properly
           $scope.$applyAsync(function() {
-            if($attributes.validateOnLoad === 'true') {
-              updateValidationClass(formController[selfController.modelController.$name].$valid);
-            }
+            updateValidationClass(formController[selfController.modelController.$name]);
           });
 
           $scope.$watch(formController.$name + '.' + selfController.modelController.$name + '.$valid', function(newValue) {
-            if(formController[selfController.modelController.$name].$dirty) {
-              updateValidationClass(formController[selfController.modelController.$name].$valid);
-            }
+            updateValidationClass(formController[selfController.modelController.$name]);
           });
         }
       }

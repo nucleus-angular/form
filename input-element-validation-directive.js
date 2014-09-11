@@ -23,7 +23,7 @@ angular.module('nag.form')
   function($injector, $compile, nagHelper, nagSvgHelper) {
     return {
       restrict: 'EA',
-      require: ['^nagInputElement', '^form'],
+      require: ['^form'],
       template: function(element, attributes) {
         var template = '';
 
@@ -44,10 +44,14 @@ angular.module('nag.form')
         $element.find('.valid-indicator img').attr('src', $injector.get('nagFormValidIconPath'));
 
         return function($scope, $element, $attributes, $controllers) {
-          var nagInputElementController = $controllers[0];
-          var formController = $controllers[1];
+          var nagInputElementValue = $element.parents('[nag-input-element]').attr('nag-input-element');
+          var modelName = nagInputElementValue.split('.')[1];
           var validateOnLoad = $element.parents('[nag-input-element]').attr('data-validate-on-load');
-          var updateValidation = function(modelController) {
+          var formController = $controllers[0];
+
+          var updateValidation = function() {
+            var modelController = formController[modelName];
+
             if(validateOnLoad === 'true' || modelController.$dirty) {
               $element.removeClass('u-hide');
 
@@ -61,22 +65,22 @@ angular.module('nag.form')
             }
           };
 
-          //we need to use $applyAsync() in order to make sure nagInputElementController.modelController is properly set
+          //we need to use $applyAsync() in order to make sure modelController is properly set
           $scope.$applyAsync(function() {
             nagSvgHelper.inject([
               $element.find('.handle img')[0],
               $element.find('.valid-indicator img')[0]
             ]);
 
-            $scope.$watch(formController.$name + '[\'' + nagInputElementController.modelController.$name + '\'].$dirty', function(newValue) {
-              updateValidation(nagInputElementController.modelController);
+            $scope.$watch(nagInputElementValue + '.$dirty', function(newValue) {
+              updateValidation();
             });
 
-            $scope.$watch(formController.$name + '[\'' + nagInputElementController.modelController.$name + '\'].$valid', function(newValue) {
-              updateValidation(nagInputElementController.modelController);
+            $scope.$watch(nagInputElementValue + '.$valid', function(newValue) {
+              updateValidation();
             });
 
-            var newElement = $compile($element.find('[ng-messages-multiple]').attr('ng-messages', formController.$name + '[\'' + nagInputElementController.modelController.$name + '\'].$error')[0].outerHTML)($scope);
+            var newElement = $compile($element.find('[ng-messages-multiple]').attr('ng-messages', nagInputElementValue + '.$error')[0].outerHTML)($scope);
             $element.find('[ng-messages-multiple]').replaceWith(newElement);
           });
         }
@@ -84,4 +88,3 @@ angular.module('nag.form')
     };
   }
 ]);
-

@@ -19,7 +19,7 @@ angular.module('nag.form')
     return {
       restrict: 'EA',
       transclude: true,
-      require: ['nagInputElement', '^form'],
+      require: ['^form'],
       templateUrl: 'components/nucleus-angular-form/assets/templates/input-element.html',
       controller: [function() {
         this.setModelController = function(modelController) {
@@ -31,7 +31,11 @@ angular.module('nag.form')
         $element.removeClass();
 
         return function($scope, $element, $attributes, $controllers) {
-          function updateValidation(modelController) {
+          var formController = $controllers[0];
+          var modelName = $attributes.nagInputElement.split('.')[1];
+
+          var updateValidation = function() {
+            var modelController = formController[modelName];
             $element.find('.input-element').removeClass('invalid valid');
 
             if($attributes.validateOnLoad === 'true' || modelController.$dirty) {
@@ -41,22 +45,24 @@ angular.module('nag.form')
                 $element.find('.input-element').removeClass('valid').addClass('invalid');
               }
             }
-          }
-
-          var selfController = $controllers[0];
-          var formController = $controllers[1];
+          };
 
           //we need to use $applyAsync in order for the $valid of the model controller to be set properly
           $scope.$applyAsync(function() {
-            updateValidation(selfController.modelController);
+            updateValidation();
+
+            //handles first time change or change after model resetted to pristine
+            $scope.$watch($attributes.nagInputElement + '.$pristine', function(newValue) {
+              updateValidation();
+            });
+
+            $scope.$watch($attributes.nagInputElement + '.$valid', function(newValue) {
+              updateValidation();
+            });
           });
 
-          $scope.$watch(formController.$name + '[\'' + selfController.modelController.$name + '\'].$viewValue', function(newValue) {
-            updateValidation(selfController.modelController);
-          });
         }
       }
     };
   }
 ]);
-

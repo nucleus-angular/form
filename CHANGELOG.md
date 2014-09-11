@@ -2,6 +2,10 @@
 
 Each change log are assumed to be accompanied by associated unit test and documentation updates.
 
+## master
+
+- removed requirement of needing nagInputElement controller to access model controller
+
 ## 0.6.0
 
 - converted to using svg helper instead of nag-svg directive

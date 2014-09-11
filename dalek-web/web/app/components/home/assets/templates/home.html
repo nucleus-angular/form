@@ -193,12 +193,73 @@
     </ul>
   </form>
 
+  <form name="complex">
+    <ul>
+      <li nag-input-element class="text">
+        <label for="complex-textbox">
+          Textbox:
+          <span nag-input-element-validation></span>
+        </label>
+        <input id="complex-textbox" ng-model="complexObject.textbox" name="textbox" type="text" nag-input nag-validate-range-length="{min: 2, max: 4}" />
+      </li>
+      <li nag-input-element class="textarea">
+        <label for="complex-textarea">
+          Text Area:
+          <span nag-input-element-validation></span>
+        </label>
+        <textarea id="complex-textarea" ng-model="complexObject.textarea" name="textarea" nag-input nag-validate-range-length="{min: 2, max: 4}"></textarea>
+      </li>
+      <li nag-input-element>
+        <label>
+          Checkbox:
+          <span nag-input-element-validation></span>
+        </label>
+        <input id="complex-checkbox1" ng-model="complexObject.check1" name="check1" type="checkbox" value="yes" nag-input nag-validate-required /><label for="complex-checkbox1">yes</label>
+        <input id="complex-checkbox2" ng-model="complexObject.check2" name="check2" type="checkbox" value="no" nag-input nag-validate-required /><label for="complex-checkbox2">no</label>
+      </li>
+      <li nag-input-element>
+        <label>
+          Radio:
+          <span nag-input-element-validation></span>
+        </label>
+        <span ng-form name="radio1" nag-input>
+          <input id="complex-radio1" type="radio" name="radio1-1" ng-model="complexObject.radio1" value="1" nag-validate-required /><label for="complex-radio1">option1</label>
+          <input id="complex-radio2" type="radio" name="radio1-2" ng-model="complexObject.radio1" value="2" nag-validate-required /><label for="complex-radio2">option2</label>
+          <input id="complex-radio3" type="radio" name="radio1-3" ng-model="complexObject.radio1" value="3" nag-validate-required /><label for="complex-radio3">option3</label>
+        </span>
+      </li>
+      <li nag-input-element>
+        <label>
+          Radio2:
+          <span nag-input-element-validation></span>
+        </label>
+        <span ng-form name="radio2" nag-input>
+          <input id="complex-radio2-1" type="radio" name="radio2-1" ng-model="complexObject.radio2" value="1" nag-validate-required /><label for="complex-radio2-1">option1</label>
+          <input id="complex-radio2-2" type="radio" name="radio2-2" ng-model="complexObject.radio2" value="2" nag-validate-required /><label for="complex-radio2-2">option2</label>
+          <input id="complex-radio2-3" type="radio" name="radio2-3" ng-model="complexObject.radio2" value="3" nag-validate-required /><label for="complex-radio2-3">option3</label>
+        </span>
+      </li>
+      <li nag-input-element>
+        <label>
+          Select:
+          <span nag-input-element-validation></span>
+        </label>
+        <select name="select" ng-model="complexObject.select" nag-input nag-validate-required>
+          <option value="">Choose</option>
+          <option value="one">One</option>
+          <option value="two">Two</option>
+        </select>
+      </li>
+    </ul>
+  </form>
+
   <header>Form Values</header>
   <ul data-ut="values">
     <li data-ut="resettable-value">Resettable: {{ resettableObject | json }}</li>
     <li data-ut="second-resettable-value">Second Resettable: {{ secondResettableObject | json }}</li>
     <li data-ut="input-element-value">Input Element: {{ inputElementObject | json }}</li>
     <li data-ut="input-element-value">Validation: {{ validationObject | json }}</li>
+    <li data-ut="complex-value">Complex: {{ complexObject | json }}</li>
   </ul>
 </div>
 

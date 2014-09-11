@@ -47,6 +47,19 @@ angular.module('nag.form')
           var nagInputElementController = $controllers[0];
           var formController = $controllers[1];
           var validateOnLoad = $element.parents('[nag-input-element]').attr('data-validate-on-load');
+          var updateValidation = function(modelController) {
+            if(validateOnLoad === 'true' || modelController.$dirty) {
+              $element.removeClass('u-hide');
+
+              if(modelController.$valid === true) {
+                $element.find('.valid-indicator').removeClass('u-hide');
+                $element.find('.invalid-indicator').addClass('u-hide');
+              } else {
+                $element.find('.valid-indicator').addClass('u-hide');
+                $element.find('.invalid-indicator').removeClass('u-hide');
+              }
+            }
+          };
 
           //we need to use $applyAsync() in order to make sure nagInputElementController.modelController is properly set
           $scope.$applyAsync(function() {
@@ -55,25 +68,15 @@ angular.module('nag.form')
               $element.find('.valid-indicator img')[0]
             ]);
 
-            $scope.$watch(formController.$name + '.' + nagInputElementController.modelController.$name + '.$dirty', function(newValue) {
-              if(newValue === true || validateOnLoad === 'true') {
-                $element.removeClass('u-hide');
-              } else {
-                $element.addClass('u-hide');
-              }
+            $scope.$watch(formController.$name + '[\'' + nagInputElementController.modelController.$name + '\'].$dirty', function(newValue) {
+              updateValidation(nagInputElementController.modelController);
             });
 
-            $scope.$watch(formController.$name + '.' + nagInputElementController.modelController.$name + '.$valid', function(newValue) {
-              if(newValue === true) {
-                $element.find('.valid-indicator').removeClass('u-hide');
-                $element.find('.invalid-indicator').addClass('u-hide');
-              } else {
-                $element.find('.valid-indicator').addClass('u-hide');
-                $element.find('.invalid-indicator').removeClass('u-hide');
-              }
+            $scope.$watch(formController.$name + '[\'' + nagInputElementController.modelController.$name + '\'].$valid', function(newValue) {
+              updateValidation(nagInputElementController.modelController);
             });
 
-            var newElement = $compile($element.find('[ng-messages-multiple]').attr('ng-messages', nagInputElementController.modelController.$name + '.$error')[0].outerHTML)($scope);
+            var newElement = $compile($element.find('[ng-messages-multiple]').attr('ng-messages', formController.$name + '[\'' + nagInputElementController.modelController.$name + '\'].$error')[0].outerHTML)($scope);
             $element.find('[ng-messages-multiple]').replaceWith(newElement);
           });
         }

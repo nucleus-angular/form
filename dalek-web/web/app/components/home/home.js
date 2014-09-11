@@ -30,6 +30,7 @@ angular.module('app.home.home', [
     firstName: 'first name4',
     email: 'test@example'
   };
+  $scope.complexObject = {};
 
   $scope.resetResettableForm = function() {
     nagFormHelper.reset($scope.resettable, $scope.resettableDefaults);

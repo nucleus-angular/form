@@ -31,7 +31,7 @@ angular.module('nag.form')
         $element.removeClass();
 
         return function($scope, $element, $attributes, $controllers) {
-          function updateValidationClass(modelController) {
+          function updateValidation(modelController) {
             $element.find('.input-element').removeClass('invalid valid');
 
             if($attributes.validateOnLoad === 'true' || modelController.$dirty) {
@@ -48,11 +48,11 @@ angular.module('nag.form')
 
           //we need to use $applyAsync in order for the $valid of the model controller to be set properly
           $scope.$applyAsync(function() {
-            updateValidationClass(formController[selfController.modelController.$name]);
+            updateValidation(selfController.modelController);
           });
 
-          $scope.$watch(formController.$name + '.' + selfController.modelController.$name + '.$valid', function(newValue) {
-            updateValidationClass(formController[selfController.modelController.$name]);
+          $scope.$watch(formController.$name + '[\'' + selfController.modelController.$name + '\'].$viewValue', function(newValue) {
+            updateValidation(selfController.modelController);
           });
         }
       }
